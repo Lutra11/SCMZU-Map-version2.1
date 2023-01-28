@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scmzu</title>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=eIKkzG4rQY3DbbBPtWeIUcHVmHA1pyRd"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js"></script>
+    <style type="text/css">  
+        html{height:100%}    
+        body{height:100%;margin:0px;padding:0px}    
+        #container{height:100%}    
+    </style> 
+</head>
+<body>
+    <div id="container"></div> 
+    
+</body>
+<script>
+    var map = new BMap.Map("container")
+    
+    //获取中南民族大学坐标
+    var point = new BMap.Point(114.399395,30.491874)  
+    map.centerAndZoom(point, 18); 
+    map.enableScrollWheelZoom(true);// 开启鼠标滚轮缩放
+    var path = [{
+    'lng': 114.401179,
+    'lat': 30.487703
+}, {
+    'lng': 114.401079,
+    'lat': 30.487703
+}, {
+    'lng': 114.400979,
+    'lat': 30.487703
+}, {
+    'lng': 114.400879,
+    'lat': 30.487703
+}, {
+    'lng': 114.400779,
+    'lat': 30.487703
+}, {
+    'lng': 114.400679,
+    'lat': 30.487703
+}, {
+    'lng': 114.400579,
+    'lat': 30.487703
+}];
+var luxian = [];
+for (var i = 0; i < path.length; i++) {
+    luxian.push(new BMapGL.Point(path[i].lng, path[i].lat));
+}
+console.log(path.length);
+var pl = new BMapGL.Polyline(luxian);
+trackAni.start();
+trackAni.cancel();      
+
+var trackAni = new BMapGLLib.TrackAnimation(map, pl, {
+    overallView: true, // 动画完成后自动调整视野到总览
+    tilt: 30,          // 轨迹播放的角度，默认为55
+    duration: 20000,   // 动画持续时长，默认为10000，单位ms
+    delay: 3000        // 动画开始的延迟，默认0，单位ms
+});
+
+    var scaleCtrl = new BMapGL.ScaleControl();// 添加比例尺控件
+    map.addControl(scaleCtrl);
+    var zoomCtrl = new BMapGL.ZoomControl();// 添加缩放控件
+    map.addControl(zoomCtrl);
+    var cityCtrl = new BMapGL.CityListControl(); // 添加城市列表控件
+    map.addControl(cityCtrl);
+
+</script>
+</html>

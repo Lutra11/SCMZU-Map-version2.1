@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/newMap">
+        <file>mapImg/1.jpg</file>
+        <file>mapImg/background.jpg</file>
+        <file>mapImg/logo.jpg</file>
+        <file>mapImg/sumz.png</file>
+        <file>mapImg/maonan.png</file>
+        <file>mapImg/kuchazi.mp3</file>
+        <file>mapImg/achang.png</file>
+    </qresource>
+</RCC>
